@@ -1,6 +1,4 @@
 import bpy
-from io_scene_gltf2.blender.exp import gltf2_blender_gather_materials
-from io_scene_gltf2.blender.imp.gltf2_blender_material import BlenderMaterial
 
 bl_info = {
     "name" : "glTF KHR_materials_variants IO",
@@ -26,7 +24,6 @@ glTF_extension_name = "KHR_materials_variants"
 
 # The glTF2 importer doesn't provide a hook mechanism for user extensions so
 # manually extend a function to import the extension
-from io_scene_gltf2.blender.imp.gltf2_blender_node import BlenderNode
 orig_create_mesh_object = BlenderNode.create_mesh_object
 def patched_create_mesh_object(gltf, vnode):
     obj = orig_create_mesh_object(gltf, vnode)
